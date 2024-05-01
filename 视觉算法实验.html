@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>文字样式更改</title>
+		<head>
+   <style>
+          body {
+              font-family: Arial, sans-serif;
+              text-align: center;
+              position: relative;
+              margin: 0; /* 清除默认的 body 边距 */
+              overflow: hidden; /* 防止内容超出页面范围 */
+          }
+          #inputText {
+              padding: 5px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              width: 200px;
+              height: 50px;
+              position: fixed;
+              bottom: 5%; /* 距离底部的距离 */
+              left: 50%;
+              transform: translateX(-50%);
+          }
+          #outputText {
+              position: absolute;
+              font-size: 3vw; /* 使用视口宽度的百分比来设置字体大小 */
+              line-height: 1; /* 防止字体换行 */
+              padding: 2vw; /* 使用视口宽度的百分比来设置内边距 */
+              top: 50%; /* 文字垂直居中 */
+              left: 50%; /* 文字水平居中 */
+              transform: translate(-50%, -50%); /* 实现文字居中 */
+          }
+          #changeButton {
+              position: fixed;
+              bottom: 2%;
+              left: 50%;
+              transform: translateX(-50%);
+          }
+      </style>
+		</head>
+
+	<body>
+     <body>
+  <h1>中文文字样式更改</h1>
+    <div id="outputText"></div>
+    <textarea id="inputText" placeholder="请输入要更改样式的中文文字"></textarea>
+    <button id="changeButton" onclick="changeStyle()">更改样式</button>
+
+    <script>
+        function changeStyle() {
+            var inputTextValue = document.getElementById("inputText").value.trim();
+            var outputDiv = document.getElementById("outputText");
+            
+            // 将输入的文本按空格分割成数组
+            var words = inputTextValue.split(/\s+/).filter(word => word.trim() !== '');
+            
+            // 设置随机字体大小
+            var randomSize = Math.floor(Math.random() * 10) + 3; // 范围在3到12vw之间
+            outputDiv.style.fontSize = randomSize + 'vw';
+            
+            // 随机颜色
+            var randomColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+            outputDiv.style.color = randomColor;
+            
+            // 随机背景颜色
+            var randomBgColor = '#'+(Math.random()*0xCCCCCC<<0).toString(16); // 范围在浅色系
+            outputDiv.style.backgroundColor = randomBgColor;
+            
+            // 设置随机字体样式
+            var fonts = ["Arial", "Helvetica", "Times New Roman", "Georgia", "Verdana", "Courier New", "Lucida Console", "宋体", "黑体", "楷体", "仿宋", "微软雅黑"];
+            var randomFont = fonts[Math.floor(Math.random() * fonts.length)];
+            outputDiv.style.fontFamily = randomFont;
+            
+            // 输出文本
+            outputDiv.textContent = inputTextValue;
+            
+            // 检查位置是否超出屏幕上方，如果超出则向下调整
+            var rect = outputDiv.getBoundingClientRect();
+            if (rect.top < 0) {
+                outputDiv.style.top = '50%';
+            }
+        }
+    </script>
+	</body>
+</html>
