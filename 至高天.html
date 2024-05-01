@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>omori's battle</title>
+
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+			integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-7ymO4nGrkm372HoSbq1OY2DP4pEZnMiA+E0F3zPr+JQQtQ82gQ1HPY3QIVtztVua" crossorigin="anonymous">
+		</script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.active {
+				box-shadow: 0px 0px 20px #cc0000
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="app">
+
+<!--此为巨幕-->
+			<div class="jumbotron">
+				<h1 class="display-4">OMORI</h1>
+				<p class="lead">你在与鲨赞老板的战斗中未能击败鳄鱼保镖而被冥王星用地球冲拳给击倒</p>
+				<hr class="my-4">
+				<p>是否选择再来一次？/或者选择通过戳刺结束这一切……</p>
+				<div class="btn btn-primary btn-lg" href="#" role="button" v-on:click="jieshu()">确定选择？</div>
+				
+			</div>
+<!--此为界面-->
+			<div class="container">
+				<div class="row" >
+
+					<div class="col-xs-4 col-sm-4 col-md-4" >
+						<div class="card " style="width: 18.5rem;" v-bind:class="{'active':xuanze==1}">
+							<img src="img/a2.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">奥布里</h5>
+								<p class="card-text">奥布里受到了攻击变成了面包</p>
+								<div href="#" class="btn btn-primary" v-on:click="select1(1)">使用生命果酱</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-4 col-sm-4 col-md-4">
+						<div class="card" style="width: 19rem;"  v-bind:class="{'active':xuanze==2}">
+							<img src="img/a3.jpg" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">凯</h5>
+								<p class="card-text">凯受到了攻击变成了面包</p>
+								<div href="#" class="btn btn-primary" v-on:click="select1(2)">使用生命果酱</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-4 col-sm-4 col-md-4">
+						<div class="card" style="width: 19rem;" v-bind:class="{'active':xuanze==3}">
+							<img src="img/a3.jpg" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">英雄</h5>
+								<p class="card-text">英雄受到了攻击变成了面包</p>
+								<div href="#" class="btn btn-primary" v-on:click="select1(3)">使用生命果酱</div>
+							</div>
+						</div>
+					</div>
+					
+
+
+
+				</div>
+
+
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					xuanze:3
+				},
+				methods: {
+					select1:function(i){
+					this.xuanze = i;
+					},
+					jieshu:function(){
+						if(this.xuanze==1){
+							alert("奥布里感到很开心！");
+						}
+						if(this.xuanze==2){
+							alert("凯感到充满活力！");
+						}
+						if(this.xuanze==3){
+							alert("英雄向你表示了感谢！");
+						}
+					}
+				},
+			});
+		</script>
+
+	</body>
+</html>
